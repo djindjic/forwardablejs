@@ -40,34 +40,8 @@ describe('Forwardable', function() {
   });
 
   it('delegate get property to receiver', function() {
-    'getOwnPropertyDescriptors' in Object || (
-      Object.getOwnPropertyDescriptors = function (Object) {
-        var
-          gOPD    = Object.getOwnPropertyDescriptor,
-          gOPN    = Object.getOwnPropertyNames,
-          gOPS    = Object.getOwnPropertySymbols,
-          gNS     = gOPS ? function (object) {
-                             return gOPN(object).concat(gOPS(object));
-                           } :
-                           gOPN,
-          descriptors
-        ;
-        function copyFrom(key) {
-          descriptors[key] = gOPD(this, key);
-        }
-        return function getOwnPropertyDescriptors(object) {
-          var result = descriptors = {};
-          gNS(object).forEach(copyFrom, object);
-          descriptors = null;
-          return result;
-        };
-      }(Object)
-    );
-
     class Receiver {
-      // constructor() { this._hello = ''; }
-      set hello(value) { this._hello = value; }
-      get hello() { return this._hello; }
+      get hello() { return 'hello world'; }
     }
     class Temp {
       constructor(receiver) {
@@ -78,28 +52,58 @@ describe('Forwardable', function() {
     Object.assign(Temp.prototype, Forwardable.prototype);
 
     let receiver = new Receiver();
-    let d = Object.getOwnPropertyDescriptors(receiver);
-    for(elem in d) {
-      console.log('----');
-      console.log(elem);
-    }
-
-    receiver.hello = 'bbb';
-    var shallowCopy = Object.create(
-      Object.getPrototypeOf(receiver),
-      Object.getOwnPropertyDescriptors(receiver)
-    );
-
-    receiver.hello = 'aaa';
-    console.log(receiver.hello);
-    console.log(shallowCopy.hello);
-    // for(var p in receiver)
-    // {
-    //   console.log(p + ": " + receiver[p]); //if you have installed Firebug.
-    // }
-    // console.log(receiver);
     let temp = new Temp(receiver);
 
-    expect(temp).to.equal('hello');
+    expect(temp.hello).to.equal('hello world');
+  });
+
+  it('delegate set and get property to receiver', function() {
+    class Receiver {
+      constructor() { this._hello = ''; }
+      get hello() { return this._hello; }
+      set hello(value) { this._hello = value; }
+    }
+    class Temp {
+      constructor(receiver) {
+        this._receiver = receiver;
+        this.delegate('_receiver', 'hello');
+      }
+    }
+    Object.assign(Temp.prototype, Forwardable.prototype);
+
+    let receiver = new Receiver();
+    let temp = new Temp(receiver);
+    temp.hello = 'hello receiver';
+
+    expect(temp.hello).to.equal('hello receiver');
+  });
+
+  it('delegate set and get properties and methods to receiver', function() {
+    class Receiver {
+      constructor() { this._name = ''; this._hello = ''; }
+      get name() { return this._name; }
+      set name(value) { this._name = value; }
+      get hello() { return this._hello; }
+      set hello(value) { this._hello = value; }
+      greet(location) {
+        return `${this._hello} ${this._name}, this is ${location}`;
+      }
+    }
+    class Temp {
+      constructor(receiver) {
+        this._receiver = receiver;
+        this.delegate('_receiver', 'hello');
+        this.delegate('_receiver', 'name');
+        this.delegate('_receiver', 'greet');
+      }
+    }
+    Object.assign(Temp.prototype, Forwardable.prototype);
+
+    let receiver = new Receiver();
+    let temp = new Temp(receiver);
+    temp.hello = 'hello';
+    temp.name = 'forwardablejs';
+
+    expect(temp.greet('github')).to.equal('hello forwardablejs, this is github');
   });
 });
