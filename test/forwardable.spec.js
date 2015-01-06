@@ -9,11 +9,7 @@ describe('Forwardable', function() {
   });
 
   it('assigns class with delegate method', function() {
-    class Temp {
-      constructor() {
-        
-      }
-    }
+    class Temp {}
     Object.assign(Temp.prototype, Forwardable.prototype);
     let temp = new Temp();
 
@@ -38,6 +34,26 @@ describe('Forwardable', function() {
 
     expect(temp.records).to.deep.equal(['first element']);
   });
+
+  it('delegate method to receiver with alias', function() {
+    class Temp {
+      constructor() {
+        this._records = [];
+        this.delegate('_records', 'push', 'add');
+      }
+
+      get records() {
+        return this._records;
+      }
+    }
+    Object.assign(Temp.prototype, Forwardable.prototype);
+
+    let temp = new Temp();
+    temp.add('first element');
+
+    expect(temp.records).to.deep.equal(['first element']);
+  });
+
 
   it('delegate get property to receiver', function() {
     class Receiver {
@@ -78,7 +94,7 @@ describe('Forwardable', function() {
     expect(temp.hello).to.equal('hello receiver');
   });
 
-  it('delegate set and get properties and methods to receiver', function() {
+  it('delegate set and get properties and methods by alias to receiver', function() {
     class Receiver {
       constructor() { this._name = ''; this._hello = ''; }
       get name() { return this._name; }
@@ -92,18 +108,18 @@ describe('Forwardable', function() {
     class Temp {
       constructor(receiver) {
         this._receiver = receiver;
-        this.delegate('_receiver', 'hello');
-        this.delegate('_receiver', 'name');
-        this.delegate('_receiver', 'greet');
+        this.delegate('_receiver', 'hello', 'hello_alias');
+        this.delegate('_receiver', 'name', 'name_alias');
+        this.delegate('_receiver', 'greet', 'greet_alias');
       }
     }
     Object.assign(Temp.prototype, Forwardable.prototype);
 
     let receiver = new Receiver();
     let temp = new Temp(receiver);
-    temp.hello = 'hello';
-    temp.name = 'forwardablejs';
+    temp.hello_alias = 'hello';
+    temp.name_alias = 'forwardablejs';
 
-    expect(temp.greet('github')).to.equal('hello forwardablejs, this is github');
+    expect(temp.greet_alias('github')).to.equal('hello forwardablejs, this is github');
   });
 });
