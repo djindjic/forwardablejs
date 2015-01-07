@@ -4,30 +4,20 @@ import {
 
 describe('Forwardable', function() {
   it('has method delegate', function() {
-    let fwd = new Forwardable();
-    expect(fwd).to.respondTo('delegate');
-  });
-
-  it('assigns class with delegate method', function() {
-    class Temp {}
-    Object.assign(Temp.prototype, Forwardable.prototype);
-    let temp = new Temp();
-
-    expect(temp).to.respondTo('delegate');
+    expect(Forwardable).itself.to.respondTo('delegate');
   });
 
   it('delegate method to receiver', function() {
     class Temp {
       constructor() {
         this._records = [];
-        this.delegate('_records', 'push');
+        Forwardable.delegate(this, this._records, 'push');
       }
 
       get records() {
         return this._records;
       }
     }
-    Object.assign(Temp.prototype, Forwardable.prototype);
 
     let temp = new Temp();
     temp.push('first element');
@@ -39,14 +29,13 @@ describe('Forwardable', function() {
     class Temp {
       constructor() {
         this._records = [];
-        this.delegate('_records', 'push', 'add');
+        Forwardable.delegate(this, this._records, 'push', 'add');
       }
 
       get records() {
         return this._records;
       }
     }
-    Object.assign(Temp.prototype, Forwardable.prototype);
 
     let temp = new Temp();
     temp.add('first element');
@@ -62,10 +51,9 @@ describe('Forwardable', function() {
     class Temp {
       constructor(receiver) {
         this._receiver = receiver;
-        this.delegate('_receiver', 'hello');
+        Forwardable.delegate(this, this._receiver, 'hello');
       }
     }
-    Object.assign(Temp.prototype, Forwardable.prototype);
 
     let receiver = new Receiver();
     let temp = new Temp(receiver);
@@ -82,10 +70,9 @@ describe('Forwardable', function() {
     class Temp {
       constructor(receiver) {
         this._receiver = receiver;
-        this.delegate('_receiver', 'hello');
+        Forwardable.delegate(this, this._receiver, 'hello');
       }
     }
-    Object.assign(Temp.prototype, Forwardable.prototype);
 
     let receiver = new Receiver();
     let temp = new Temp(receiver);
@@ -108,12 +95,11 @@ describe('Forwardable', function() {
     class Temp {
       constructor(receiver) {
         this._receiver = receiver;
-        this.delegate('_receiver', 'hello', 'hello_alias');
-        this.delegate('_receiver', 'name', 'name_alias');
-        this.delegate('_receiver', 'greet', 'greet_alias');
+        Forwardable.delegate(this, this._receiver, 'hello', 'hello_alias');
+        Forwardable.delegate(this, this._receiver, 'name', 'name_alias');
+        Forwardable.delegate(this, this._receiver, 'greet', 'greet_alias');
       }
     }
-    Object.assign(Temp.prototype, Forwardable.prototype);
 
     let receiver = new Receiver();
     let temp = new Temp(receiver);
