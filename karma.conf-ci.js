@@ -5,12 +5,6 @@ var geSaLaKaCuLa = require('gesalakacula');
 module.exports = function (config) {
 
   var customLaunchers = geSaLaKaCuLa({
-    'Linux': {
-      'chrome': '30..39,beta,dev'
-    },
-    'OS X 10.10': {
-      'safari': '8'
-    },
     'Windows 8.1': {
       'internet explorer': '11'
     }
