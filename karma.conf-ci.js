@@ -12,7 +12,7 @@ module.exports = function (config) {
 
   config.set({
     basePath: '',
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['jspm', 'mocha', 'chai'],
     files: [
       'test/*.spec.js'
     ],
