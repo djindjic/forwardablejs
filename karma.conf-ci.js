@@ -14,7 +14,7 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['mocha', 'chai'],
     files: [
-      '*.spec.js'
+      'test/*.spec.js'
     ],
     reporters: ['dots', 'saucelabs'],
     port: 9876,
