@@ -5,6 +5,7 @@
   "jspm": {},
   "devDependencies": {
     "chai": "^1.10.0",
+    "gesalakacula": "^1.0.0",
     "gulp": "^3.8.10",
     "gulp-bump": "^0.1.11",
     "gulp-shell": "^0.2.11",
@@ -16,6 +17,7 @@
     "karma-jspm": "^1.1.1",
     "karma-mocha": "^0.1.10",
     "karma-mocha-reporter": "^0.2.2",
+    "karma-sauce-launcher": "^0.2.10",
     "karma-sinon": "^1.0.4",
     "mocha": "^2.1.0",
     "semver": "^4.2.0",
