@@ -1,3 +1,5 @@
+var geSaLaKaCuLa = require('gesalakacula');
+ 
 var browsers = geSaLaKaCuLa({
   'Windows 7': {
     'internet explorer': '8..11'
