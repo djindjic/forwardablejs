@@ -1,5 +1,21 @@
-// Karma configuration
 var browsers = {
+  sl_chrome: {
+    base: 'SauceLabs',
+    browserName: 'chrome',
+    platform: 'Windows 7',
+    version: '35'
+  },
+  sl_firefox: {
+    base: 'SauceLabs',
+    browserName: 'firefox',
+    version: '30'
+  },
+  sl_ios_safari: {
+    base: 'SauceLabs',
+    browserName: 'iphone',
+    platform: 'OS X 10.9',
+    version: '7.1'
+  },
   sl_ie_11: {
     base: 'SauceLabs',
     browserName: 'internet explorer',
@@ -7,8 +23,6 @@ var browsers = {
     version: '11'
   }
 };
-// Generated on Wed Dec 24 2014 17:40:57 GMT+0100 (CET)
-
 
 module.exports = function(config) {
   var configuration = {
@@ -78,11 +92,6 @@ module.exports = function(config) {
 
   if(process.env.TRAVIS){
     configuration.browsers = Object.keys(browsers);
-    // configuration.reporters = configuration.reporters.concat(['coverage', 'coveralls']);
-    // configuration.coverageReporter = {
-    //   type : 'lcovonly',
-    //   dir : 'coverage/'
-    // };
   }
 
   config.set(configuration);
