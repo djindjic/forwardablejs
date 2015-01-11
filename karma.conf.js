@@ -1,5 +1,18 @@
 // Karma configuration
+var browsers = {
+  sl_ie_11: {
+    base: 'SauceLabs',
+    browserName: 'internet explorer',
+    platform: 'Windows 8.1',
+    version: '11'
+  },
+  Chrome_travis_ci: {
+    base: 'Chrome',
+    flags: ['--no-sandbox']
+  }
+};
 // Generated on Wed Dec 24 2014 17:40:57 GMT+0100 (CET)
+
 
 module.exports = function(config) {
   var configuration = {
@@ -35,7 +48,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['mocha'],
+    reporters: ['saucelabs', 'mocha'],
 
 
     // web server port
@@ -59,12 +72,7 @@ module.exports = function(config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
 
-    customLaunchers: {
-      Chrome_travis_ci: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
-    },
+    customLaunchers: browsers,
 
 
     // Continuous Integration mode
@@ -73,7 +81,7 @@ module.exports = function(config) {
   };
 
   if(process.env.TRAVIS){
-    configuration.browsers = ['Chrome_travis_ci'];
+    configuration.browsers = Object.keys(browsers);
     // configuration.reporters = configuration.reporters.concat(['coverage', 'coveralls']);
     // configuration.coverageReporter = {
     //   type : 'lcovonly',
