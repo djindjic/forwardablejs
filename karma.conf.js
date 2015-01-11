@@ -5,10 +5,6 @@ var browsers = {
     browserName: 'internet explorer',
     platform: 'Windows 8.1',
     version: '11'
-  },
-  Chrome_travis_ci: {
-    base: 'Chrome',
-    flags: ['--no-sandbox']
   }
 };
 // Generated on Wed Dec 24 2014 17:40:57 GMT+0100 (CET)
