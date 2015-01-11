@@ -1,10 +1,23 @@
-var geSaLaKaCuLa = require('gesalakacula');
- 
-var browsers = geSaLaKaCuLa({
-  'Windows 7': {
-    'internet explorer': '8..11'
+var browsers = {
+  sl_firefox: {
+    base: 'SauceLabs',
+    browserName: 'firefox',
+    platform: 'Linux',
+    version: '14'
+  },
+  sl_ios_safari: {
+    base: 'SauceLabs',
+    browserName: 'safari',
+    platform: 'OS X 10.8',
+    version: '6'
+  },
+  sl_ie_11: {
+    base: 'SauceLabs',
+    browserName: 'internet explorer',
+    platform: 'Windows 7',
+    version: '9'
   }
-})
+};
 
 module.exports = function(config) {
   var configuration = {
