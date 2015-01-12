@@ -15,8 +15,7 @@ gulp.task('deploy-master', function(){
             'git commit -m "' + newVer + '"', 
             'git tag -a "' + newVer + '" -m "' + newVer + '"',
             'git push origin master', 
-            'git push origin --tags',
-            'git pull https://<token>@github.com/username/bar.git'
+            'git push origin --tags'
            ]));
 
 });
