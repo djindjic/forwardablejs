@@ -14,5 +14,5 @@ deploy:
   api_key:
     secure: dUohmk0201UUKNhfWqhZSQJnaW4Z20as2mlSKeoSLjSjhYngfmOfefw8WHjEyLi3umWh9FcO0hv3C+sBmLXtLbEfajRe65Z5+d/HBjjadMq3h56OfaJzfLcUGHPJTlx3sAmPH1FIT0ZQ3PtAadO+qxrWsgvqqTBJ7E0JrJfa74I=
   on:
-  	tags: true
+    tags: true
     repo: djindjic/forwardablejs
