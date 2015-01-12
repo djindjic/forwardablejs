@@ -11,6 +11,8 @@ gulp.task('deploy-master', function(){
     .pipe(bump({version: newVer}))
     .pipe(gulp.dest('./'))
     .on('end', shell.task([
+            'git config --global user.email "travis@deploy.com"',
+            'git config --global user.name "Travis Deploy"',
             'git add --all',
             'git commit -m "' + newVer + '"', 
             'git tag -a "' + newVer + '" -m "' + newVer + '"',
