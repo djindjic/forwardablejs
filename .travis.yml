@@ -15,3 +15,4 @@ deploy:
     secure: dUohmk0201UUKNhfWqhZSQJnaW4Z20as2mlSKeoSLjSjhYngfmOfefw8WHjEyLi3umWh9FcO0hv3C+sBmLXtLbEfajRe65Z5+d/HBjjadMq3h56OfaJzfLcUGHPJTlx3sAmPH1FIT0ZQ3PtAadO+qxrWsgvqqTBJ7E0JrJfa74I=
   on:
     repo: djindjic/forwardablejs
+
