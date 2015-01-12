@@ -14,7 +14,7 @@ gulp.task('deploy-master', function(){
             'git add --all',
             'git commit -m "' + newVer + '"', 
             'git tag v' + newVer,
-            'git push origin test-tag', 
+            'git push origin master', 
             'git push origin --tags'
            ]));
 
