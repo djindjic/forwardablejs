@@ -13,3 +13,4 @@ deploy:
   on:
     tags: true
     repo: djindjic/forwardablejs
+    all_branches: true
