@@ -7,6 +7,7 @@ script: node_modules/karma/bin/karma start karma.conf.js --single-run
 branches:
   only:
   - master
+before_deploy: git fetch --tags
 deploy:
   provider: npm
   email: djindjic@gmail.com
