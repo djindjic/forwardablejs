@@ -10,5 +10,34 @@
   
 forwardablejs
 ===========
-ES6 lib for jspm
+ES6 lib for jspm inspired by Ruby Forwardable.
 
+Basic usage:
+
+```js
+class Receiver {
+  constructor() { this._name = ''; this._hello = ''; }
+  get name() { return this._name; }
+  set name(value) { this._name = value; }
+  get hello() { return this._hello; }
+  set hello(value) { this._hello = value; }
+  greet(location) {
+    return `${this._hello} ${this._name}, this is ${location}`;
+  }
+}
+class Temp {
+  constructor(receiver) {
+    this._receiver = receiver;
+    Forwardable.delegate(this, this._receiver, 'hello', 'hello_alias');
+    Forwardable.delegate(this, this._receiver, 'name', 'name_alias');
+    Forwardable.delegate(this, this._receiver, 'greet', 'greet_alias');
+  }
+}
+
+let receiver = new Receiver();
+let temp = new Temp(receiver);
+temp.hello_alias = 'hello';
+temp.name_alias = 'forwardablejs';
+
+expect(temp.greet_alias('github')).to.equal('hello forwardablejs, this is github');
+```

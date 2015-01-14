@@ -3,7 +3,7 @@ import {
 } from 'lib/index';
 
 describe('Forwardable', function() {
-  it('has method delegate', function() {
+  it('has static method delegate', function() {
     expect(Forwardable).itself.to.respondTo('delegate');
   });
 
@@ -61,7 +61,7 @@ describe('Forwardable', function() {
     expect(temp.hello).to.equal('hello world');
   });
 
-  it('delegate set and get property to receiver', function() {
+  it('delegate set and get properties to receiver', function() {
     class Receiver {
       constructor() { this._hello = ''; }
       get hello() { return this._hello; }
@@ -81,7 +81,7 @@ describe('Forwardable', function() {
     expect(temp.hello).to.equal('hello receiver');
   });
 
-  it('delegate set and get properties and methods by alias to receiver', function() {
+  it('delegate set and get properties and method by their aliases to receiver', function() {
     class Receiver {
       constructor() { this._name = ''; this._hello = ''; }
       get name() { return this._name; }
