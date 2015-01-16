@@ -4,9 +4,6 @@ node_js:
 before_script:
 - node_modules/.bin/jspm install
 script: node_modules/karma/bin/karma start karma.conf.js --single-run
-branches:
-  only:
-  - master
 deploy:
   provider: npm
   email: djindjic@gmail.com
@@ -15,4 +12,4 @@ deploy:
     secure: dUohmk0201UUKNhfWqhZSQJnaW4Z20as2mlSKeoSLjSjhYngfmOfefw8WHjEyLi3umWh9FcO0hv3C+sBmLXtLbEfajRe65Z5+d/HBjjadMq3h56OfaJzfLcUGHPJTlx3sAmPH1FIT0ZQ3PtAadO+qxrWsgvqqTBJ7E0JrJfa74I=
   on:
     tags: true
-    repo: djindjic/forwardablejs
+    all_branches: true

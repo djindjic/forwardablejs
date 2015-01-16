@@ -92,7 +92,7 @@ describe('Forwardable', function() {
         return `${this._hello} ${this._name}, this is ${location}`;
       }
     }
-    class Temp {
+    class Delegator {
       constructor(receiver) {
         this._receiver = receiver;
         Forwardable.delegate(this, this._receiver, 'hello', 'hello_alias');
@@ -102,10 +102,10 @@ describe('Forwardable', function() {
     }
 
     let receiver = new Receiver();
-    let temp = new Temp(receiver);
-    temp.hello_alias = 'hello';
-    temp.name_alias = 'forwardablejs';
+    let delegator = new Delegator(receiver);
+    delegator.hello_alias = 'hello';
+    delegator.name_alias = 'forwardablejs';
 
-    expect(temp.greet_alias('github')).to.equal('hello forwardablejs, this is github');
+    expect(delegator.greet_alias('github')).to.equal('hello forwardablejs, this is github');
   });
 });
