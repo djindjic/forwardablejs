@@ -15,6 +15,8 @@ ES6 lib for jspm inspired by Ruby Forwardable.
 Basic usage:
 
 ```js
+import {Forwardable} from 'lib/index';
+
 class Receiver {
   constructor() { this._name = ''; this._hello = ''; }
   get name() { return this._name; }
