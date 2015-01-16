@@ -12,7 +12,12 @@ forwardablejs
 ===========
 ES6 lib for jspm inspired by Ruby Forwardable.
 
-Basic usage:
+###Instalation
+```bach
+jspm install npm:forwardablejs
+```
+
+###Basic usage
 
 ```js
 class Receiver {
