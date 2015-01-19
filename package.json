@@ -1,12 +1,9 @@
 {
   "name": "forwardablejs",
   "registry": "jspm",
-  "version": "0.1.46",
+  "version": "0.1.47",
+  "main": "lib/index",
   "jspm": {
-    "directories": {
-      "lib": "lib"
-    },
-    "main": "index",
     "format": "es6"
   },
   "devDependencies": {
