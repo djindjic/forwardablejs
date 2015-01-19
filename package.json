@@ -1,9 +1,15 @@
 {
   "name": "forwardablejs",
   "registry": "jspm",
-  "version": "0.1.44",
+  "version": "0.1.45",
   "main": "lib/index",
-  "jspm": {},
+  "jspm": {
+    "directories": {
+      "lib": "lib"
+    },
+    "main": "index",
+    "format": "es6"
+  },
   "devDependencies": {
     "chai": "^1.10.0",
     "gulp": "^3.8.10",
