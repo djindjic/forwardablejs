@@ -1,8 +1,7 @@
 {
   "name": "forwardablejs",
   "registry": "jspm",
-  "version": "0.1.45",
-  "main": "lib/index",
+  "version": "0.1.46",
   "jspm": {
     "directories": {
       "lib": "lib"
