@@ -1,4 +1,4 @@
-> ES6 lib for jspm
+ES6 lib for jspm
 
 <p align="left">
 <a href="https://travis-ci.org/djindjic/forwardablejs">
