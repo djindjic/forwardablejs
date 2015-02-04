@@ -1,3 +1,5 @@
+> ES6 lib for jspm
+
 <p align="left">
 <a href="https://travis-ci.org/djindjic/forwardablejs">
   <img alt="Travis Status" src="http://img.shields.io/travis/djindjic/forwardablejs/master.svg?style=flat&amp;label=travis">
