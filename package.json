@@ -1,8 +1,9 @@
 {
   "name": "forwardablejs",
   "registry": "jspm",
-  "version": "0.1.56",
+  "version": "0.1.58",
   "main": "lib/index",
+  "repository": "djindjic/forwardablejs",
   "jspm": {
     "format": "es6"
   },
