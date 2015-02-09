@@ -21,5 +21,5 @@ gulp.task('deploy-master', function(){
 });
 
 gulp.task('jspm-link', function(cb) {
-  watch(['lib/**/*'], shell.task(['jspm link github:djindjic/forwardablejs@' + pkg.version + ' -y']));
+  watch(['lib/**/*'], shell.task(['jspm link github:djindjic/forwardablejs@dev -y']));
 });
