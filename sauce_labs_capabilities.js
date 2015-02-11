@@ -14,12 +14,12 @@ module.exports.capabilities = {
     platform: 'OS X 10.8',
     version: '6',
     name: pkg.name + " (build: " + process.env.TRAVIS_BUILD_NUMBER + ")"
-  },
-  sl_ie_9: {
-    base: 'SauceLabs',
-    browserName: 'internet explorer',
-    platform: 'Windows 7',
-    version: '9',
-    name: pkg.name + " (build: " + process.env.TRAVIS_BUILD_NUMBER + ")"
-  }
+  }//,
+  // sl_ie_9: {
+  //   base: 'SauceLabs',
+  //   browserName: 'internet explorer',
+  //   platform: 'Windows 7',
+  //   version: '9',
+  //   name: pkg.name + " (build: " + process.env.TRAVIS_BUILD_NUMBER + ")"
+  // }
 };
