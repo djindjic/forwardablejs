@@ -10,13 +10,13 @@ var browsers = {
     browserName: 'safari',
     platform: 'OS X 10.8',
     version: '6'
-  },
-  sl_ie_9: {
-    base: 'SauceLabs',
-    browserName: 'internet explorer',
-    platform: 'Windows 7',
-    version: '9'
-  }
+  }//,
+  // sl_ie_9: {
+  //   base: 'SauceLabs',
+  //   browserName: 'internet explorer',
+  //   platform: 'Windows 7',
+  //   version: '9'
+  // }
 };
 
 module.exports = function(config) {
